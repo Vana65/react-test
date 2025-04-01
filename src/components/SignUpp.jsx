@@ -10,6 +10,7 @@ function SignUp() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [repeatPasswordError, setRepeatPasswordError] = useState("");
+  const [serverError, setServerError] = useState("");
 
   function validate() {
     let isValid = true;
@@ -17,6 +18,7 @@ function SignUp() {
     setEmailError("");
     setPasswordError("");
     setRepeatPasswordError("");
+    setServerError("");
 
     if (name.trim() === "") {
       setNameError("Name is required");
@@ -50,18 +52,42 @@ function SignUp() {
     return isValid;
   }
 
-  function submit(event) {
+  async function submit(event) {
     event.preventDefault();
 
     if (validate()) {
-      axios
-        .post(" http://react-app.test/api/Submit", {
-          name: name,
-          email: email,
-          password: password,
-          password_confirmation: repeatPassword,
-        })
-        .then((res) => console.log(res));
+      try {
+        const response = await axios.post(
+          "http://react-app.test/api/register",
+          {
+            name: name.trim(),
+            email: email.trim(),
+            password: password.trim(),
+            password_confirmation: repeatPassword.trim(),
+          }
+        );
+        if (response.status === 200) {
+          window.localStorage.setItem("email", email);
+          window.location.href = "/";
+        }
+
+        console.log(response.data);
+
+        setName("");
+        setEmail("");
+        setPassword("");
+        setRepeatPassword("");
+      } catch (error) {
+        if (error.response) {
+          if (error.response.status === 422) {
+            setEmailError("Email already exists");
+          } else {
+            setServerError("Something went wrong. Please try again.");
+          }
+        } else {
+          setServerError("Server is unreachable. Check your connection.");
+        }
+      }
     }
   }
 
@@ -75,7 +101,7 @@ function SignUp() {
             id="Name"
             placeholder="Name..."
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value.trimStart())}
           />
           {nameError && <p className="error">{nameError}</p>}
         </label>
@@ -87,7 +113,7 @@ function SignUp() {
             id="Email"
             placeholder="Email..."
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value.trimStart())}
           />
           {emailError && <p className="error">{emailError}</p>}
         </label>
@@ -117,6 +143,8 @@ function SignUp() {
             <p className="error">{repeatPasswordError}</p>
           )}
         </label>
+
+        {serverError && <p className="error">{serverError}</p>}
 
         <button type="submit" className="submit-btn">
           Submit

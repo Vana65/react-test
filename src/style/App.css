@@ -1,13 +1,19 @@
 * {
   font-family: "Courier New", Courier, monospace;
 }
+.container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 40px;
+  margin: 0 auto;
+}
 .divsign {
   font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f4f4f4;
+  margin-bottom: 90px;
 }
 .divsign form {
   background: white;
@@ -49,4 +55,34 @@
 .error {
   color: red;
   font-size: 13px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
+nav .d-flex h4 {
+  margin: 0 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-btn {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+}
+.d-flex.rigester-btn {
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
 }
