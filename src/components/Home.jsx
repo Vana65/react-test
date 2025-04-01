@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Header from "./Header";
 
 function Home() {
@@ -5,6 +6,7 @@ function Home() {
     <div>
       <Header />
       <h1>hallo</h1>
+      <Link to={"/dashboard"}>Dashboard</Link>
     </div>
   );
 }

@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 function Header() {
   function logout() {
     window.localStorage.removeItem("email");
-    window.location.pathname = "/Home";
+    window.location.pathname = "/";
   }
   return (
     <>
       <div className="container">
         <nav className="d-flex">
           <div className="d-flex">
-            <Link to="/Home">Home</Link>
+            <Link to="/">Home</Link>
             <Link to="/About">About</Link>
           </div>
           <div className="d-flex">
