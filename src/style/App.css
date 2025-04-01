@@ -64,10 +64,14 @@ nav {
   padding: 15px;
 }
 
-nav .d-flex h4 {
+nav .d-flex {
   margin: 0 15px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .login-btn {
@@ -78,7 +82,7 @@ nav .d-flex h4 {
   font-weight: bold;
   transition: 0.3s ease-in-out;
 }
-.d-flex.rigester-btn {
+.rigester-btn {
   text-decoration: none;
   padding: 10px 20px;
   border-radius: 5px;

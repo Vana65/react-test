@@ -6,24 +6,24 @@ function Header() {
       <div className="container">
         <nav className="d-flex">
           <div className="d-flex">
-            <h4>Home</h4>
-            <h4>About</h4>
+            <Link to="/Home">Home</Link>
+            <Link to="/About">About</Link>
           </div>
           <div className="d-flex">
-            <Link
-              to="/register"
-              className="register-btn"
-              style={{ textAlign: "center" }}
-            >
-              Register
-            </Link>
-            <Link
-              to="/login"
-              className="login-btn"
-              style={{ textAlign: "center" }}
-            >
-              Login
-            </Link>
+            {!window.localStorage.getItem("email") ? (
+              <>
+                <Link to="/register" className="register-btn">
+                  Register
+                </Link>
+                <Link to="/login" className="login-btn">
+                  Login
+                </Link>
+              </>
+            ) : (
+              <Link to="/logout" className="register-nav">
+                Log out
+              </Link>
+            )}
           </div>
         </nav>
       </div>
