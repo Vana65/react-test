@@ -5,13 +5,11 @@ import About from "./components/About";
 import Logout from "./components/Logout";
 import Logint from "./components/Logint";
 import Dashboard from "./components/Dashboard";
-import TopBar from "./components/TopBar";
 import "./style/App.css";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <TopBar />
         <Route path="/register" element={<SignUpp />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/about" element={<About />} />
