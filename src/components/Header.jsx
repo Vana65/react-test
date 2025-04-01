@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
 function Header() {
+  function logout() {
+    window.localStorage.removeItem("email");
+    window.location.pathname = "/Home";
+  }
   return (
     <>
       <div className="container">
@@ -20,7 +24,7 @@ function Header() {
                 </Link>
               </>
             ) : (
-              <Link to="/logout" className="register-nav">
+              <Link to="/logout" className="register-nav " onClick={logout}>
                 Log out
               </Link>
             )}

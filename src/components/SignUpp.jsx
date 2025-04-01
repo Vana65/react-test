@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import Header from "./components/Header";
 
 function SignUp() {
   const [name, setName] = useState("");
@@ -68,7 +69,7 @@ function SignUp() {
         );
         if (response.status === 200) {
           window.localStorage.setItem("email", email);
-          window.location.href = "/";
+          window.location.href = "/Home";
         }
 
         console.log(response.data);
@@ -93,6 +94,7 @@ function SignUp() {
 
   return (
     <div className="divsign">
+      <Header />
       <form onSubmit={submit}>
         <label htmlFor="Name">
           Name:

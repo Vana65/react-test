@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import Header from "./components/Header";
 
 function Logint() {
   const [email, setEmail] = useState("");
@@ -43,7 +44,10 @@ function Logint() {
         email: email.trim(),
         password: password.trim(),
       });
-
+      if (response.status === 200) {
+        window.localStorage.setItem("email", email);
+        window.location.pathname = "/Home";
+      }
       console.log(response.data);
 
       setEmail("");
@@ -63,6 +67,7 @@ function Logint() {
 
   return (
     <div className="divsign">
+      <Header />
       <form onSubmit={submit}>
         <label htmlFor="Email">
           Email:

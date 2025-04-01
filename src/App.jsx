@@ -1,20 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUpp from "./components/SignUpp";
-import Header from "./components/Header";
 import Home from "./components/Home";
 import About from "./components/About";
 import Logout from "./components/Logout";
 import Logint from "./components/Logint";
+import Dashboard from "./components/Dashboard";
+import TopBar from "./components/TopBar";
+import "./style/App.css";
 function App() {
   return (
     <BrowserRouter>
-      <Header />
       <Routes>
+        <TopBar />
         <Route path="/register" element={<SignUpp />} />
-        <Route path="/" element={<Home />} />
+        <Route path="/Home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Logint />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
