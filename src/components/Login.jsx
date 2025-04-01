@@ -1,8 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import Header from "./components/Header";
-
-function Logint() {
+import Header from "./Header";
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -46,7 +45,7 @@ function Logint() {
       });
       if (response.status === 200) {
         window.localStorage.setItem("email", email);
-        window.location.pathname = "/Home";
+        window.location.pathname = "/";
       }
       console.log(response.data);
 
@@ -66,41 +65,44 @@ function Logint() {
   }
 
   return (
-    <div className="divsign">
+    <>
       <Header />
-      <form onSubmit={submit}>
-        <label htmlFor="Email">
-          Email:
-          <input
-            type="email"
-            id="Email"
-            placeholder="Email..."
-            value={email}
-            onChange={(e) => setEmail(e.target.value.trimStart())}
-          />
-          {emailError && <p className="error">{emailError}</p>}
-        </label>
 
-        <label htmlFor="Password">
-          Password:
-          <input
-            type="password"
-            id="Password"
-            placeholder="Password..."
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {passwordError && <p className="error">{passwordError}</p>}
-        </label>
+      <div className="divsign">
+        <form onSubmit={submit}>
+          <label htmlFor="Email">
+            Email:
+            <input
+              type="email"
+              id="Email"
+              placeholder="Email..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value.trimStart())}
+            />
+            {emailError && <p className="error">{emailError}</p>}
+          </label>
 
-        {serverError && <p className="error">{serverError}</p>}
+          <label htmlFor="Password">
+            Password:
+            <input
+              type="password"
+              id="Password"
+              placeholder="Password..."
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {passwordError && <p className="error">{passwordError}</p>}
+          </label>
 
-        <button type="submit" className="submit-btn">
-          Submit
-        </button>
-      </form>
-    </div>
+          {serverError && <p className="error">{serverError}</p>}
+
+          <button type="submit" className="submit-btn">
+            Submit
+          </button>
+        </form>
+      </div>
+    </>
   );
 }
 
-export default Logint;
+export default Login;

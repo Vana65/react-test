@@ -1,10 +1,11 @@
-import TopBar from "./components/TopBar";
+import TopBar from "./TopBar";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   return (
     <div>
       <TopBar />
-      <div>Dashboard</div>;
+      <Link to="/">Home</Link>
     </div>
   );
 }
